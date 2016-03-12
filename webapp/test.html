@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>个人中心</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+    #user{font-size: 16px; width: 100%;height: 50px;line-height: 50px;}
+    </style>
+  </head>
+  
+  <body>
+    <div style="width: 440px;height: 450px;border: 1px solid #CCD9EA;" align="center">
+    	<div id="user">
+    		<a id="userName" href="header.html"></a>
+    	</div>
+    	<div id="image">
+    		<img alt="用户头像" src="" width="100%" height="100%" id="userImage">
+    	</div>
+    </div>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js" ></script>
+    <script type="text/javascript">
+		   $(document).ready(function() {
+			   loadUserName();
+			   
+		   });
+		   function loadUserName(){
+				$.getJSON("user!getUserObj.action",function(user){
+					$("#userName").text(user.userName);
+					$("#userImage").attr("alt",user.userName);
+					$("#userImage").attr("src",user.userImage);
+				})
+			}
+   	</script>
+  </body>
+</html>
